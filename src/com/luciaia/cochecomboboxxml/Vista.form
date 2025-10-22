@@ -27,10 +27,10 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Marca Coche"/>
+          <text value="Nombre"/>
         </properties>
       </component>
-      <component id="96a3b" class="javax.swing.JTextField" binding="marcaTxt">
+      <component id="96a3b" class="javax.swing.JTextField" binding="nombreTxt">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -45,10 +45,10 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Modelo Coche"/>
+          <text value="Especie"/>
         </properties>
       </component>
-      <component id="5f68e" class="javax.swing.JTextField" binding="modeloTxt">
+      <component id="5f68e" class="javax.swing.JTextField" binding="especieTxt">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,25 +64,25 @@
         </constraints>
         <properties/>
       </component>
-      <component id="f5877" class="javax.swing.JButton" binding="altaCocheButton" default-binding="true">
+      <component id="f5877" class="javax.swing.JButton" binding="altaAnimalButton">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
-          <text value="Alta Coche"/>
+          <text value="Alta Animal"/>
         </properties>
       </component>
-      <component id="fcafd" class="javax.swing.JButton" binding="mostrarCocheButton" default-binding="true">
+      <component id="fcafd" class="javax.swing.JButton" binding="mostrarAnimalButton">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
-          <text value="Mostrar Coche"/>
+          <text value="Mostrar Animal"/>
         </properties>
       </component>
-      <component id="d2e50" class="javax.swing.JLabel" binding="lblCoche">
+      <component id="d2e50" class="javax.swing.JLabel" binding="lblAnimal">
         <constraints>
           <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>

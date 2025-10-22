@@ -1,6 +1,6 @@
 package com.luciaia.cochecomboboxxml;
 
-import com.luciaia.cochecomboboxxml.base.Coche;
+import com.luciaia.cochecomboboxxml.base.Animal;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -24,17 +24,17 @@ public class Vista {
 
     // creados al arrastrar
     private JPanel panel1;
-    private JTextField marcaTxt;
-    private JTextField modeloTxt;
+    private JTextField nombreTxt;
+    private JTextField especieTxt;
     private JComboBox comboBox1;
-    private JButton altaCocheButton;
-    private JButton mostrarCocheButton;
-    private JLabel lblCoche;
+    private JButton altaAnimalButton;
+    private JButton mostrarAnimalButton;
+    private JLabel lblAnimal;
 
     // dos elementos más creados por mí
-    private LinkedList<Coche> lista;
+    private LinkedList<Animal> lista;
     private DefaultComboBoxModel dcbm;
-    // necesarios para guardar datos de los coches
+    // necesarios para guardar datos de los animales
     // y para poner cosas gráficas
 
     // boton derecha generate form main()
@@ -58,10 +58,10 @@ public class Vista {
         comboBox1.setModel(dcbm);
 
         //
-        altaCocheButton.addActionListener(new ActionListener() {
+        altaAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                altaCoche(marcaTxt.getText(), modeloTxt.getText());
+                altaAnimal(nombreTxt.getText(), especieTxt.getText());
                 // Limpiamos datos
                 refrescarComboBox();
             }
@@ -79,19 +79,19 @@ public class Vista {
             }
         });
 
-        mostrarCocheButton.addActionListener(new ActionListener() {
+        mostrarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //muetsro el coche seleccionado en la label
-                Coche seleccionado = (Coche) dcbm.getSelectedItem();
-                lblCoche.setText(seleccionado.toString());
+                //muestro el Animal seleccionado en la label
+                Animal seleccionado = (Animal) dcbm.getSelectedItem();
+                lblAnimal.setText(seleccionado.toString());
             }
         });
     }
 
     private void refrescarComboBox() {
         dcbm.removeAllElements();
-        for (Coche coche : lista) {
+        for (Animal coche : lista) {
             dcbm.addElement(coche);
         }
     }
@@ -152,11 +152,11 @@ public class Vista {
                 Node coche = coches.item(i);
                 Element elemento = (Element) coche;
 
-                // Obtengo los campos marca y modelo
-                String marca = elemento.getElementsByTagName("marca").item(0).getChildNodes().item(0).getNodeValue();
-                String modelo = elemento.getElementsByTagName("modelo").item(0).getChildNodes().item(0).getNodeValue();
+                // Obtengo los campos nombre y especie
+                String nombre = elemento.getElementsByTagName("nombre").item(0).getChildNodes().item(0).getNodeValue();
+                String especie = elemento.getElementsByTagName("especie").item(0).getChildNodes().item(0).getNodeValue();
 
-                altaCoche(marca, modelo);
+                altaAnimal(nombre, especie);
             }
 
         } catch (ParserConfigurationException e) {
@@ -191,23 +191,23 @@ public class Vista {
             Text dato;
 
             // por cada coche de la lista, creo un nodo coche
-            for (Coche coche : lista) {
+            for (Animal coche : lista) {
                 // creon un nodo coche y lo añado al nodo raiz
                 nodoCcohe = documento.createElement("coche");
                 raiz.appendChild(nodoCcohe);
 
                 // a cada coche le añado los nodos marac y coche
-                nodoDatos = documento.createElement("marca");
+                nodoDatos = documento.createElement("nombre");
                 nodoCcohe.appendChild(nodoDatos);
 
                 // a cada nodo datos le añado el contenido
-                dato = documento.createTextNode(coche.getMarca());
+                dato = documento.createTextNode(coche.getNombre());
                 nodoDatos.appendChild(dato);
 
-                nodoDatos = documento.createElement("modelo");
+                nodoDatos = documento.createElement("especie");
                 nodoCcohe.appendChild(nodoDatos);
 
-                dato = documento.createTextNode(coche.getModelo());
+                dato = documento.createTextNode(coche.getEspecie());
                 nodoDatos.appendChild(dato);
             }
 
@@ -228,8 +228,8 @@ public class Vista {
         }
     }
 
-    private void altaCoche(String marca, String modelo) {
-        lista.add(new Coche(marca, modelo));
+    private void altaAnimal(String nombre, String especie) {
+        lista.add(new Animal(nombre, especie));
     }
 
     public static void main(String[] args) {
